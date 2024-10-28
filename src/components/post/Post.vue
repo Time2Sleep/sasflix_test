@@ -1,26 +1,36 @@
 <script setup lang="ts">
+import { Post } from '@/types';
 import PostReaction from './PostReaction.vue';
 import PostTags from './PostTags.vue';
+
+interface Props {
+    data: Post
+    showLink?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    showLink: true
+});
 </script>
 
 <template>
     <div class="post">
         <h2 class="post__title">
-            His mother had always taught him
+            {{ props.data.title }}
         </h2>
 
         <div class="post__content">
-            His mother had always taught him not to ever think of himself as better than others.
+            {{ props.data.body }}
         </div>
 
         <div class="post__actions text-caption">
-            <PostReaction/>
+            <PostReaction :reactions="props.data.reactions" :post-id="props.data.id"/>
 
-            <RouterLink to="#">Open comments</RouterLink>
+            <RouterLink :to="props.data.id.toString()" v-if="props.showLink">Open comments</RouterLink>
 
             <div class="post__date">Today</div>
 
-            <PostTags/>
+            <PostTags :tags="props.data.tags"/>
         </div>
     </div>
 </template>

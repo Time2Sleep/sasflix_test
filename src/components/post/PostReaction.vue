@@ -1,29 +1,50 @@
 <script setup lang="ts">
 import LikeIcon from '@/components/icons/LikeIcon.vue';
 import DislikeIcon from '@/components/icons/DislikeIcon.vue';
+import { Reactions } from '@/types';
+import { useReactions } from '../../composables/useReactions';
+import { computed } from 'vue';
 
+interface Props {
+    reactions: Reactions,
+    postId: number
+}
 
+const props = defineProps<Props>();
+
+const { like, dislike, isLiked, isDisliked } = useReactions();
+
+const isPostLiked = computed<boolean>(() => isLiked(props.postId));
+const isPostDisliked = computed<boolean>(() => isDisliked(props.postId));
+
+const likesCount = computed<number>(() => {
+    return isPostLiked.value ? props.reactions.likes + 1 : props.reactions.likes;
+});
+
+const dislikesCount = computed<number>(() => {
+    return isPostDisliked.value ? props.reactions.dislikes + 1 : props.reactions.dislikes;
+});
 </script>
 
 <template>
     <div class="reaction">
-        <button class="reaction__button reaction__like">
-            <LikeIcon mode="dark"/>
+        <button class="reaction__button reaction__like" :class="{active: isPostLiked}" @click="like(props.postId)">
+            <LikeIcon :mode="isPostLiked ? 'light' : 'dark'"/>
 
             <span>Like</span>
 
             <span class="reaction__count text-caption">
-                192
+                {{ likesCount }}
             </span>
         </button>
 
-        <button class="reaction__button reaction__dislike active">
-            <DislikeIcon/>
+        <button class="reaction__button reaction__dislike" :class="{active: isPostDisliked}" @click="dislike(props.postId)">
+            <DislikeIcon :mode="isPostDisliked ? 'light' : 'dark'"/>
 
             <span>Trash</span>
 
             <span class="reaction__count text-caption">
-                192
+                {{ dislikesCount }}
             </span>
         </button>
     </div>

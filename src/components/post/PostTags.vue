@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import TagTailIcon from '@/components/icons/TagTailIcon.vue';
+
+interface Props {
+    tags: string[]
+}
+
+const props = defineProps<Props>();
 </script>
 
 <template>
     <div class="tags text-caption">
-        <TagTailIcon class="tags__tail"/>
+        <TagTailIcon v-if="props.tags.length" class="tags__tail"/>
     
-        <div class="tags__item">history</div>
-        <div class="tags__item">american</div>
-        <div class="tags__item">crime</div>
+        <div class="tags__item" v-for="tag in props.tags">{{ tag }}</div>
     </div>
 </template>
 

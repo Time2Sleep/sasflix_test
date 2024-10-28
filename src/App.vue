@@ -14,6 +14,7 @@ import MainHeader from './components/layouts/MainHeader.vue';
     margin: 0 auto;
     width: 678px;
     padding-top: 10px;
+    padding-bottom: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
