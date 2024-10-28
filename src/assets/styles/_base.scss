@@ -28,8 +28,12 @@ html {
   height: 100%;
 }
 
-a {
-  color: $c-border-orange;
+a, .link {
+  color: $c-orange;
+  text-decoration: underline;
+  text-decoration-color: $c-border-orange;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
 }
 
 h1 {
@@ -37,9 +41,22 @@ h1 {
   color: $c-orange;
   font-size: $text-xl;
   line-height: $text-xl;
+  letter-spacing: -1.45px;
 }
 
 h2 {
   font-size: $text-l;
-  line-height: auto;
+  line-height: 1;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: unset;
+}
+
+.text-caption {
+  font-size: $text-s;
+  line-height: 1;
+  letter-spacing: -0.08px;
 }
