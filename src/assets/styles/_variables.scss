@@ -1,0 +1,28 @@
+//fonts
+$font-sf-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-sf-text: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+
+//base colors
+$c-orange: #FF6B00;
+$c-red: #FF3B30;
+$c-black: #040505;
+$c-text: #05090E;
+
+//extra colors
+$c-overlay: rgba($c-black, 0.04);
+$c-border: rgba($c-black, 0.22);
+$c-border-orange: rgba($c-orange, 0.3);
+$c-overlay-white: rgba(255, 255, 255, 0.95);
+$c-tag: rgba(120, 120, 128, 0.08);
+
+//spacing
+$spacing-s: 16px;
+$spacing-m: 24px;
+$spacing-l: 32px; 
+$spacing-xl: 48px;
+
+//font size
+$text-s: 14px;
+$text-m: 20px;
+$text-l: 28px;
+$text-xl: 40px;
