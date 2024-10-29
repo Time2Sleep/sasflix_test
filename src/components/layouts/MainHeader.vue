@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1>ikakprosto.ru</h1>
+        <h1><RouterLink to="/">ikakprosto.ru</RouterLink></h1>
     </header>
 </template>
 
